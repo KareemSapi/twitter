@@ -1,0 +1,32 @@
+
+.container{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.header {
+
+    width: 50%;
+    height: 5%;
+  }
+
+.email {
+
+    width: 50%;
+    height: 5%;
+  }
+
+.pwd {
+
+    width: 50%;
+    height: 5%;
+  }
+
+.msg {
+
+    width: 50%;
+    height: 5%;
+  }
+

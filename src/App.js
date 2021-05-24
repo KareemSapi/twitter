@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+
+import {Route, Switch} from 'react-router-dom';
+import Signup from './components/Signup';
+import React, {useContext} from 'react';
+import {firebaseAuth} from './provider/AuthProvider';
 import './App.css';
+import Signin from './components/Signin';
+import Home from './components/Home'
 
 function App() {
+
+  const { token } = useContext(firebaseAuth)
+  console.log(token)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {/* switch allows switching which components render.  */}
+      <Switch>
+        {/* route allows you to render by url path */}
+        <Route exact path='/' render={rProps => token === null ? <Signin /> : <Home />} />
+        <Route exact path='/signin' component={Signin} />
+        <Route exact path='/signup' component={Signup} />
+
+      </Switch>
+    </>
   );
 }
 
